@@ -84,6 +84,14 @@ function bar(pct, slots = 10) {
   return '█'.repeat(filled) + '░'.repeat(slots - filled);
 }
 
+function fmtAge(min) {
+  if (min < 1) return 'just now';
+  if (min < 60) return `${Math.round(min)}m ago`;
+  const h = Math.floor(min / 60);
+  const m = Math.round(min % 60);
+  return `${h}h ${m}m ago`;
+}
+
 // Reads the same local cache the Claude desktop app uses to render its own
 // Settings -> Usage "Current session" bar. This is an undocumented, private
 // file (not a public API) and may change format in any future app update.
@@ -185,9 +193,9 @@ if (planUsage) {
   const sdColor = planUsage.sd >= 80 ? 'red' : planUsage.sd >= 50 ? 'orange' : 'green';
   console.log(`--Current session (5h): ${bar(planUsage.fh)} ${planUsage.fh}% used | color=${fhColor} font=Menlo`);
   console.log(`--This week: ${bar(planUsage.sd)} ${planUsage.sd}% used | color=${sdColor} font=Menlo`);
-  if (planUsage.ageMin > 20) {
-    console.log(`--(stale, ${Math.round(planUsage.ageMin)}m old — open Claude desktop app to refresh) | color=gray size=11`);
-  }
+  const ageColor = planUsage.ageMin > 60 ? 'red' : planUsage.ageMin > 20 ? 'orange' : 'gray';
+  console.log(`--Last updated: ${fmtAge(planUsage.ageMin)} | color=${ageColor} size=11`);
+  console.log(`--The Claude app itself only refreshes this every ~5-15 min, so this can lag your real usage by that much. | color=gray size=11`);
   console.log('---');
 } else {
   console.log('Plan usage limits: unavailable | size=13 color=gray');

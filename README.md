@@ -45,6 +45,7 @@ Separately, the Claude desktop app keeps a small local cache of your account's l
 ## Important caveats
 
 - **The plan-limit cache file is undocumented.** `plan-usage-history.json` is a private, reverse-engineered file the Claude desktop app uses for its own UI — it is not a published API and Anthropic could change its format or location in any future update. If that happens, the plan-limit section will silently disappear (local token counts are unaffected, since those come from Claude Code's own stable log format).
+- **The plan-limit numbers lag by up to ~5-15 minutes.** The Claude desktop app itself only writes a fresh sample to that cache file every 5-15 minutes (measured from its own history), not in real time. The plugin re-reads the file every 30 seconds, so it shows the latest value about as fast as it's technically possible to — but that value can still be several minutes behind your actual usage. The dropdown shows a "Last updated" timestamp so this is never silently stale.
 - **The dollar figures are not your real bill.** On a Pro/Max subscription, usage within your plan limits is flat-fee — no real money moves. The "hypothetical API-rate cost" shown here is just `local token count × public API list price`, useful only as a relative sense of scale, not your actual usage-credit spend.
 - This only sees Claude Code usage **on this machine**. It can't see usage from other devices, or from claude.ai chat directly.
 
