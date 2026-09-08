@@ -4,7 +4,7 @@ A tiny [SwiftBar](https://github.com/swiftbar/SwiftBar) / [xbar](https://xbarapp
 
 Everything runs locally. No network calls, no API keys, no accounts — it just reads files already on your disk.
 
-![screenshot](assets/screenshot.png)
+![screenshot](assets/ClaudeSwitftBar.png)
 <!-- Replace the image above with a real screenshot of your menu bar dropdown. -->
 
 ## What it shows
