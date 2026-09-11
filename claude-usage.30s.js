@@ -2,7 +2,7 @@
 //
 // <xbar/swiftbar plugin>
 // <xbar.title>Claude Usage Bar</xbar.title>
-// <xbar.version>v1.0</xbar.version>
+// <xbar.version>v1.1</xbar.version>
 // <xbar.author>Prasath</xbar.author>
 // <xbar.desc>Shows your Claude Code local token usage and (if the Claude desktop app is installed) your account's 5-hour/weekly plan-limit percentage, right in the menu bar.</xbar.desc>
 // <xbar.dependencies>node</xbar.dependencies>
@@ -14,6 +14,8 @@ const path = require('path');
 const os = require('os');
 
 const ROOT = path.join(os.homedir(), '.claude', 'projects');
+const VERSION = '1.1.0';
+const REPO_URL = 'https://github.com/prasathdev15/claude-usage-bar';
 
 // $ per million tokens: [input, output, cacheWrite, cacheRead]
 // Source: anthropic.com/pricing — update these if Anthropic changes list pricing.
@@ -233,3 +235,8 @@ if (byProjectToday.size) {
 
 console.log('Refresh | refresh=true');
 console.log('Open logs folder | shell=open param1=' + ROOT + ' terminal=false');
+console.log('---');
+console.log('About');
+console.log('--Claude Usage Bar | size=12');
+console.log(`--Version ${VERSION} | size=11 color=gray`);
+console.log(`--View on GitHub | size=11 href=${REPO_URL}`);

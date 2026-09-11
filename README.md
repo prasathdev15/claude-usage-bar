@@ -25,7 +25,7 @@ Everything runs locally. No network calls, no API keys, no accounts — it just 
 ## Install
 
 ```bash
-git clone https://github.com/<your-username>/claude-usage-bar.git
+git clone https://github.com/prasathdev15/claude-usage-bar.git
 cd claude-usage-bar
 ./install.sh
 ```
