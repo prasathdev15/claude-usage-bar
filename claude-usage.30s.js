@@ -236,7 +236,7 @@ if (byProjectToday.size) {
 console.log('Refresh | refresh=true');
 console.log('Open logs folder | shell=open param1=' + ROOT + ' terminal=false');
 console.log('---');
-console.log('About');
+console.log('Plugin Info');
 console.log('--Claude Usage Bar | size=12');
 console.log(`--Version ${VERSION} | size=11 color=gray`);
 console.log(`--View on GitHub | size=11 href=${REPO_URL}`);
